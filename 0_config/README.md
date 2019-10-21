@@ -15,7 +15,7 @@ $ npm i MODULE_NAME
 
 개발용 의존성 모듈 설치
 
-```bahs
+```bash
 $ npm install --save-dev MODULE_NAME
 # or
 $ npm i -D MODULE_NAME
