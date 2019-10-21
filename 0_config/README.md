@@ -54,6 +54,14 @@ $ npm i -D webpack-merge
 $ npm i -D @babel/core @babel/preset-env babel-loader
 ```
 
+`.babelrc` 파일을 생성하고 다음 옵션을 추가합니다.
+
+```json
+{
+  "presets": ["@babel/preset-env"]
+}
+```
+
 ### Vue
 
 Vue를 설치합니다.  
