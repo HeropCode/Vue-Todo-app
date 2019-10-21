@@ -83,7 +83,7 @@ $ npm i -D vue-template-compiler vue-loader vue-style-loader css-loader
 $ npm i -D node-sass sass-loader
 ```
 
-이렇게 사용할 수 있습니다.
+`.vue` 파일 내에서 다음과 같이 사용할 수 있습니다.
 
 ```vue
 <style lang="scss"></style>
