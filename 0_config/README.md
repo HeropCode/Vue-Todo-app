@@ -1,6 +1,6 @@
 # Vue Todo app
 
-Vue 프로젝트를 진행하기 전에 웹팩(Webpack)을 이용해 개발 환경을 구성합니다.
+Vue 프로젝트를 진행하기 전에 웹팩(Webpack)을 이용해 개발 환경을 구성합니다.  
 Vue CLI를 사용하지 않음으로 Vue 기반 프로젝트가 기본적으로 어떻게 동작하는지 이해합니다.
 
 ## 설치
@@ -23,7 +23,7 @@ $ npm i -D MODULE_NAME
 
 ### Webpack
 
-`webpack`은 웹팩(Webpack)의 핵심 패키지이며, 
+`webpack`은 웹팩(Webpack)의 핵심 패키지이며,  
 `webpack-cli`는 터미널에서 웹팩 명령(Commands)를 실행할 수 있게 해주는 도구입니다. 
 
 ```bash
@@ -36,7 +36,7 @@ $ npm i -D webpack webpack-cli
 $ npm i -D webpack-dev-server
 ```
 
-`webpack-merge`는 웹팩 Config 객체를 병합하기 위해 설치합니다.
+`webpack-merge`는 웹팩 Config 객체를 병합하기 위해 설치합니다.  
 웹팩을 개발용(`serve`)과 배포용(`build`)으로 구분해 실행하기 위해 사용합니다.
 
 ```bash
@@ -45,9 +45,9 @@ $ npm i -D webpack-merge
 
 ### Babel
 
-바벨(Babel)은 ES6 이상의 코드를 ES5 이하 버전으로 변환하기 위해 사용합니다.
-`@babel/core`는 바벨이 실제 동작하는 모듈이고,
-`@babel/preset-env`는 바벨의 지원 스펙을 지정합니다.
+바벨(Babel)은 ES6 이상의 코드를 ES5 이하 버전으로 변환하기 위해 사용합니다.  
+`@babel/core`는 바벨이 실제 동작하는 모듈이고,  
+`@babel/preset-env`는 바벨의 지원 스펙을 지정합니다.  
 `babel-loader`는 웹팩(Webpack) 지원을 위해 사용합니다.
 
 ```bash
@@ -56,7 +56,7 @@ $ npm i -D @babel/core @babel/preset-env babel-loader
 
 ### Vue
 
-Vue를 설치합니다.
+Vue를 설치합니다.  
 일반 의존성 모듈로 설치해야 합니다.(`-D`가 없어야 합니다!)
 
 ```bash
@@ -132,7 +132,7 @@ module.exports = {
 
 ## package.json
 
-`npm run serve`으로 개발용 서버를 실행하거나,
+`npm run serve`으로 개발용 서버를 실행하거나,  
 `npm run build`으로 배포용 파일을 빌드할 수 있습니다.
 
 ```json
