@@ -89,7 +89,7 @@ $ npm i -D node-sass sass-loader
 <style lang="scss"></style>
 ```
 
-### eslint
+### ESLint
 
 ```bash
 npm i -D eslint babel-eslint eslint-config-standard eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-standard eslint-plugin-vue
