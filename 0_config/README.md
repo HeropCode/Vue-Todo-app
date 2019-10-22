@@ -181,8 +181,8 @@ module.exports = {
 ## package.json
 
 `npm run serve`으로 개발용 서버를 실행하거나,  
-`npm run build`으로 배포용 파일을 빌드할 수 있습니다.
-`npm run lint`로 코드 규칙을 검사합니다.
+`npm run build`으로 배포용 파일을 빌드할 수 있습니다.  
+`npm run lint`로 코드 규칙을 검사합니다.  
 `npm run lint:fix`로 코드 규칙을 검사하고 수정합니다.
 
 ```json
