@@ -1,9 +1,9 @@
-const path = require('path'); // 파일이나 디렉터리 경로를 다루기 위한 NodeJS 기본 모듈
-const merge = require('webpack-merge');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const CopyPlugin = require('copy-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const path = require('path') // 파일이나 디렉터리 경로를 다루기 위한 NodeJS 기본 모듈
+const merge = require('webpack-merge')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const CopyPlugin = require('copy-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = (env, opts) => {
   const config = {
@@ -67,7 +67,7 @@ module.exports = (env, opts) => {
         'favicon.png'
       ])
     ]
-  };
+  }
 
   if (opts.mode === 'development') {
     return merge(config, {
@@ -78,14 +78,13 @@ module.exports = (env, opts) => {
         // HMR, https://webpack.js.org/concepts/hot-module-replacement/
         hot: true
       }
-    });
-
+    })
   } else { // production
     return merge(config, {
       plugins: [
         // 빌드(build)시 dist 디렉터리 내 기존 모든 파일 삭제
         new CleanWebpackPlugin()
       ]
-    });
+    })
   }
-};
+}

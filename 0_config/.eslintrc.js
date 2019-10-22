@@ -2,6 +2,7 @@ module.exports = {
   root: true,
   parserOptions: {
     parser: "babel-eslint",
+    ecmaVersion: 2015,
     sourceType: 'module'
   },
   env: {
@@ -9,17 +10,18 @@ module.exports = {
     node: true
   },
   extends: [
-    "eslint:recommended",
+    // https://github.com/standard/eslint-config-standard
+    'standard',
+    // https://eslint.vuejs.org/rules/
+    //// "plugin:vue/base"
+    //// "plugin:vue/essential"
+    //// "plugin:vue/strongly-recommended"
     "plugin:vue/recommended"
   ],
   plugins: [
     "vue"
   ],
-  // add your custom rules here
   rules: {
-    // allow async-await
-    'generator-star-spacing': 'off',
-    // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
+    // 예외 규칙을 추가할 수 있습니다
   }
 }
