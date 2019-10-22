@@ -95,7 +95,7 @@ $ npm i -D node-sass sass-loader
 npm i -D eslint babel-eslint eslint-config-standard eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-standard eslint-plugin-vue
 ```
 
-`.eslintrc.js` 파일을 생성하고 다음 옵션을 추가합니다.
+`.eslintrc.js` 파일을 생성하고 다음 옵션을 추가합니다.  
 코드 규칙을 검사하기 위한 옵션을 제공합니다.
 
 ```js
@@ -120,7 +120,7 @@ module.exports = {
 }
 ```
 
-`.eslintignore` 파일을 생성하고 다음 내용을 추가합니다.
+`.eslintignore` 파일을 생성하고 다음 내용을 추가합니다.  
 코드 규칙을 검사할 때 무시할 파일이나 디렉터리를 지정합니다.
 
 ```text
