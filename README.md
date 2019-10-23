@@ -78,9 +78,10 @@ $ npm i -D vue-template-compiler vue-loader vue-style-loader css-loader
 ```
 
 만약 CSS Preprocessor Sass(SCSS)를 사용하려면 다음 모듈을 추가로 설치합니다.
+8버전의 'Peer Dependency' 이슈로 때문에 7버전으로 설치합니다.
 
 ```bash
-$ npm i -D node-sass sass-loader
+$ npm i -D node-sass sass-loader@^7
 ```
 
 `.vue` 파일 내에서 다음과 같이 사용할 수 있습니다.
@@ -92,7 +93,7 @@ $ npm i -D node-sass sass-loader
 ### ESLint
 
 ```bash
-npm i -D eslint babel-eslint eslint-config-standard eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-standard eslint-plugin-vue
+npm i -D eslint@^5 babel-eslint eslint-config-standard@^12 eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-standard eslint-plugin-vue
 ```
 
 `.eslintrc.js` 파일을 생성하고 다음 옵션을 추가합니다.  
