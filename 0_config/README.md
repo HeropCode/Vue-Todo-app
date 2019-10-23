@@ -89,6 +89,46 @@ $ npm i -D node-sass sass-loader
 <style lang="scss"></style>
 ```
 
+### ESLint
+
+```bash
+npm i -D eslint babel-eslint eslint-config-standard eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-standard eslint-plugin-vue
+```
+
+`.eslintrc.js` 파일을 생성하고 다음 옵션을 추가합니다.  
+코드 규칙을 검사하기 위한 옵션을 제공합니다.
+
+```js
+module.exports = {
+  root: true,
+  parserOptions: {
+    parser: "babel-eslint",
+    ecmaVersion: 2015,
+    sourceType: 'module'
+  },
+  env: {
+    browser: true,
+    node: true
+  },
+  extends: [
+    'standard',
+    "plugin:vue/recommended"
+  ],
+  plugins: [
+    "vue"
+  ]
+}
+```
+
+`.eslintignore` 파일을 생성하고 다음 내용을 추가합니다.  
+코드 규칙을 검사할 때 무시할 파일이나 디렉터리를 지정합니다.
+
+```text
+node_modules/
+dist/
+assets/
+```
+
 ### 기타
 
 `index.html`을 사용하기 위해 `html-webpack-plugin`을 설치합니다.
@@ -140,14 +180,18 @@ module.exports = {
 
 ## package.json
 
-`npm run serve`으로 개발용 서버를 실행하거나,  
-`npm run build`으로 배포용 파일을 빌드할 수 있습니다.
+- `npm run serve`: 개발용 서버를 실행합니다  
+- `npm run build`: 배포용 파일을 빌드할 수 있습니다  
+- `npm run lint`: 코드 규칙을 검사합니다
+- `npm run lint:fix`: 코드 규칙을 검사하고 수정합니다
 
 ```json
 {
   "scripts": {
     "serve": "webpack-dev-server --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "lint": "eslint --ext .js,.vue .",
+    "lint:fix": "eslint --fix --ext .js,.vue ."
   }
 }
 ```
