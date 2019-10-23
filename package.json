@@ -10,8 +10,8 @@
   "scripts": {
     "serve": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
-    "lint": "eslint --ext .js,.vue .",
-    "lint:fix": "eslint --fix --ext .js,.vue ."
+    "lint": "eslint --ext .js,.vue 0_config",
+    "lint:fix": "eslint --fix --ext .js,.vue 0_config"
   },
   "keywords": [],
   "author": "HEROPY",
