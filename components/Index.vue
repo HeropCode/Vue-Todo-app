@@ -1,6 +1,9 @@
 <template>
-  <div>
-    {{ msg }}
+  <div class="todo-app">
+    <input
+      v-model="todoTitle"
+      type="text"
+    />
   </div>
 </template>
 
@@ -8,7 +11,7 @@
 export default {
   data () {
     return {
-      msg: 'Hello Vue~'
+      todoTitle: ''
     }
   }
 }
