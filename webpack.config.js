@@ -47,7 +47,7 @@ module.exports = (env, opts) => {
           ]
         },
         {
-          test: /\.m?js$/,
+          test: /\.?js$/,
           exclude: /node_modules/, // 제외할
           use: {
             loader: 'babel-loader'
@@ -61,10 +61,12 @@ module.exports = (env, opts) => {
         template: path.join(__dirname, 'index.html')
       }),
       new VueLoaderPlugin(),
-      // 각 파일을 `dist` 디렉터리에 복사합니다
+      // assets 디렉터리의 내용을 `dist` 디렉터리에 복사합니다
       new CopyPlugin([
-        'favicon.ico',
-        'favicon.png'
+        {
+          from: 'assets/',
+          to: '.'
+        }
       ])
     ]
   }
