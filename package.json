@@ -1,7 +1,7 @@
 {
   "name": "vue-todo-app",
   "version": "1.0.0",
-  "description": "Vue Todo app",
+  "description": "Vue Todo list app",
   "repository": {
     "type": "git",
     "url": "https://github.com/HeropCode/Vue-Todo-app"
@@ -12,7 +12,7 @@
     "ie >= 10"
   ],
   "scripts": {
-    "serve": "webpack-dev-server --mode development",
+    "dev": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
     "lint": "eslint --ext .js,.vue .",
     "lint:fix": "eslint --fix --ext .js,.vue ."
@@ -40,7 +40,7 @@
     "node-sass": "^4.12.0",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.3.1",
-    "vue-loader": "^15.7.1",
+    "vue-loader": "^15.7.2",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.10",
     "webpack": "^4.41.2",
@@ -49,6 +49,11 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.7.0",
+    "crypto-random-string": "^3.0.1",
+    "lodash": "^4.17.15",
+    "lowdb": "^1.0.0",
+    "moment": "^2.24.0",
     "vue": "^2.6.10"
   }
 }

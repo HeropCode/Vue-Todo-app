@@ -1,13 +1,13 @@
 <template>
-  <index />
+  <todo-app />
 </template>
 
 <script>
-import Index from './components/Index'
+import TodoApp from './components/TodoApp'
 
 export default {
   components: {
-    Index
+    TodoApp
   }
 }
 </script>
