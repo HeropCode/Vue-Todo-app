@@ -311,10 +311,18 @@ yarn-error.log*
 
 스타일 적용을 적용하고, 그에 따라 일부 구조를 변경합니다.
 
-## 구글 메터리얼 아이콘
+## Google Material Icons
+
+[Google Material Icons(머티리얼 아이콘)](https://material.io/resources/icons/)은 일반적인 동작과 아이템을 위한 유쾌하고 아름답게 제작된 심볼입니다.<br>
+[Apache license version 2.0.](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 ```html
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+```
+
+```html
+<i class="material-icons">done</i>
+<i class="material-icons">close</i>
 ```
 
 # Chapter 3
