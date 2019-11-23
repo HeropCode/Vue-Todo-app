@@ -58,13 +58,13 @@ $ npm i -D webpack-merge
 ```
 
 `webpack.config.js` 파일을 생성합니다.<br>
-자세한 설정 내용은 완성된 파일을 참고하세요.
+자세한 설정 내용은 [완성된 파일(webpack.config.js)](https://github.com/HeropCode/Vue-Todo-app/blob/master/webpack.config.js)을 참고하세요.
 
 ## Babel
 
-바벨(Babel)은 ES6 이상의 코드를 ES5 이하 버전으로 변환하기 위해 사용합니다.
+[바벨(Babel)](https://babeljs.io/)은 ES6 이상의 코드를 ES5 이하 버전으로 변환하기 위해 사용합니다.
 
-- [@babel/core](hhttps://babeljs.io/docs/en/babel-core): 바벨이 실제 동작하는 모듈입니다.
+- [@babel/core](https://babeljs.io/docs/en/babel-core): 바벨이 실제 동작하는 모듈입니다.
 - [@babel/preset-env](https://babeljs.io/docs/en/babel-preset-env): 바벨의 지원 스펙을 지정합니다.
 - [babel-loader](https://github.com/babel/babel-loader): 웹팩(Webpack) 지원을 위해 사용합니다.
 
@@ -171,10 +171,9 @@ module.exports = {
     // https://github.com/standard/eslint-config-standard
     'standard',
     // https://eslint.vuejs.org/rules/
-    //// 'plugin:vue/base'
-    //// 'plugin:vue/essential'
-    //// 'plugin:vue/strongly-recommended'
+    // 'plugin:vue/base'
     'plugin:vue/essential'
+    // 'plugin:vue/strongly-recommended'
   ],
   plugins: [
     'vue'

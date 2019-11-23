@@ -90,7 +90,7 @@ module.exports = (env, opts) => {
   } else {
     return merge(config, {
       plugins: [
-        // 빌드(build)시 `output.path`(`dist` 디렉터리) 내 기존 모든 파일 삭제
+        // 빌드(build) 직전 `output.path`(`dist` 디렉터리) 내 기존 모든 파일 삭제
         new CleanWebpackPlugin()
       ]
     })
