@@ -1,7 +1,7 @@
 module.exports = {
   root: true,
   parserOptions: {
-    parser: "babel-eslint",
+    parser: 'babel-eslint',
     ecmaVersion: 2015,
     sourceType: 'module'
   },
@@ -13,15 +13,24 @@ module.exports = {
     // https://github.com/standard/eslint-config-standard
     'standard',
     // https://eslint.vuejs.org/rules/
-    //// "plugin:vue/base"
-    //// "plugin:vue/essential"
-    //// "plugin:vue/strongly-recommended"
-    "plugin:vue/recommended"
+    //// 'plugin:vue/base'
+    //// 'plugin:vue/essential'
+    //// 'plugin:vue/strongly-recommended'
+    'plugin:vue/essential'
   ],
   plugins: [
-    "vue"
+    'vue'
   ],
   rules: {
     // 예외 규칙을 추가할 수 있습니다
+    'vue/html-self-closing': ['error', {
+      'html': {
+        'void': 'always',
+        'normal': 'always',
+        'component': 'always'
+      },
+      'svg': 'always',
+      'math': 'always'
+    }]
   }
 }

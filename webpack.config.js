@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+require('@babel/polyfill')
 
 module.exports = (env, opts) => {
   const config = {
@@ -14,7 +15,10 @@ module.exports = (env, opts) => {
     // 파일을 읽어들이기 시작하는 진입
     // `__dirname`은 현재 파일의 위치를 알려주는 NodeJS 전역 변수
     entry: {
-      app: path.join(__dirname, 'main.js')
+      app: [
+        '@babel/polyfill',
+        path.join(__dirname, 'main.js')
+      ]
     },
     // 결과물(번들)을 반환하는 설정
     // `[name]`은 `entry`의 Key 이름, `app`
@@ -47,7 +51,7 @@ module.exports = (env, opts) => {
           ]
         },
         {
-          test: /\.m?js$/,
+          test: /\.?js$/,
           exclude: /node_modules/, // 제외할
           use: {
             loader: 'babel-loader'
@@ -61,10 +65,12 @@ module.exports = (env, opts) => {
         template: path.join(__dirname, 'index.html')
       }),
       new VueLoaderPlugin(),
-      // 각 파일을 `dist` 디렉터리에 복사합니다
+      // assets 디렉터리의 내용을 `dist` 디렉터리에 복사합니다
       new CopyPlugin([
-        'favicon.ico',
-        'favicon.png'
+        {
+          from: 'assets/',
+          to: '.'
+        }
       ])
     ]
   }
@@ -74,15 +80,17 @@ module.exports = (env, opts) => {
       devtool: 'eval',
       devServer: {
         // 자동으로 기본 브라우저를 오픈합니다
-        open: true,
+        open: false,
         // HMR, https://webpack.js.org/concepts/hot-module-replacement/
         hot: true
       }
     })
-  } else { // production
+
+  // opts.mode === 'production'
+  } else {
     return merge(config, {
       plugins: [
-        // 빌드(build)시 dist 디렉터리 내 기존 모든 파일 삭제
+        // 빌드(build)시 `output.path`(`dist` 디렉터리) 내 기존 모든 파일 삭제
         new CleanWebpackPlugin()
       ]
     })
