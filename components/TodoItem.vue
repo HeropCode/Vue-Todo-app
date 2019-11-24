@@ -1,52 +1,68 @@
 <template>
   <div
-    :title="date"
+    :class="{ done: todo.done }"
     class="todo-item"
   >
+    <!-- EDIT -->
     <div
       v-if="isEditMode"
-      class="item--edit"
+      class="item__inner item--edit"
     >
       <input
         ref="titleInput"
-        v-model="editedTitle"
+        :value="editedTitle"
         type="text"
-        @keypress.enter="editedTodo"
-        @keypress.esc="offEditMode"
+        @input="editedTitle = $event.target.value"
+        @keydown.enter="editedTodo"
+        @keydown.esc="offEditMode"
         @blur="offEditMode"
       />
-      <button @click="offEditMode">
-        취소
-      </button>
-      <button @click="editedTodo">
-        완료
-      </button>
+      <div class="item__actions">
+        <button
+          key="cancel"
+          @click="offEditMode"
+        >취소</button>
+        <button
+          key="complete"
+          @click="editedTodo"
+        >완료</button>
+      </div>
     </div>
+
+    <!-- NORMAL -->
     <div
       v-else
-      class="item--normal"
+      class="item__inner item--normal"
     >
       <input
         v-model="todo.done"
         type="checkbox"
         @change="updateTodo({ done: todo.done })"
       />
-      <span
-        :class="{ done: todo.done }"
-        class="item__title"
-        @dblclick="onEditMode">{{ todo.title }}</span>
-      <button @click="onEditMode">
-        수정
-      </button>
-      <button @click="deleteTodo">
-        삭제
-      </button>
+      <div class="item__title-wrap">
+        <div
+          class="item__title"
+          @dblclick="onEditMode">{{ todo.title }}</div>
+        <div class="item__date">
+          {{ date }}
+        </div>
+      </div>
+      <div class="item__actions">
+        <button
+          key="update"
+          @click="onEditMode"
+        >수정</button>
+        <button
+          ket="delete"
+          @click="deleteTodo"
+        >삭제</button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import moment from 'moment'
+import dayjs from 'dayjs'
 
 export default {
   name: 'TodoItem',
@@ -61,7 +77,7 @@ export default {
   },
   computed: {
     date () {
-      const date = moment(this.todo.createdAt)
+      const date = dayjs(this.todo.createdAt)
       const isSame = date.isSame(this.todo.updatedAt)
       if (isSame) {
         return date.format('YYYY년 MM월 DD일')
@@ -104,7 +120,18 @@ export default {
 </script>
 
 <style lang="scss">
-  .done {
-    text-decoration: line-through;
+  .todo-item {
+    margin-bottom: 10px;
+    .item__inner {
+      display: flex;
+    }
+    .item__date {
+      font-size: 12px;
+    }
+    &.done {
+      .item__title {
+        text-decoration: line-through;
+      }
+    }
   }
 </style>

@@ -46,8 +46,8 @@ module.exports = (env, opts) => {
           use: [
             'vue-style-loader', // 1st
             'css-loader', // 2nd
-            'sass-loader', // 3rd
-            'postcss-loader' // 4th
+            'postcss-loader', // 3rd
+            'sass-loader' // 4th
           ]
         },
         {
