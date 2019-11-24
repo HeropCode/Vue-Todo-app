@@ -1,37 +1,37 @@
 <template>
   <div class="todo-app">
 
-    <!-- FILTERS -->
-    <div class="todo-app__filters">
-      <button
-        :class="{ active: filter === 'all' }"
-        @click="changeFilter('all')"
-      >
-        모든 항목 ({{ todos.length }})
-      </button>
-      <button
-        :class="{ active: filter === 'active' }"
-        @click="changeFilter('active')"
-      >
-        해야 할 항목 ({{ activeCount }})
-      </button>
-      <button
-        :class="{ active: filter === 'completed' }"
-        @click="changeFilter('completed')"
-      >
-        완료된 항목 ({{ completedCount }})
-      </button>
-    </div>
-
-    <hr />
-
-    <!-- ACTIONS -->
     <div class="todo-app__actions">
-      <input
-        v-model="allDone"
-        type="checkbox"
-      />
-      <button @click="clearCompleted">완료된 항목 삭제</button>
+      <!-- FILTERS -->
+      <div class="filters">
+        <button
+          :class="{ active: filter === 'all' }"
+          @click="changeFilter('all')"
+        >
+          모든 항목 ({{ todos.length }})
+        </button>
+        <button
+          :class="{ active: filter === 'active' }"
+          @click="changeFilter('active')"
+        >
+          해야 할 항목 ({{ activeCount }})
+        </button>
+        <button
+          :class="{ active: filter === 'completed' }"
+          @click="changeFilter('completed')"
+        >
+          완료된 항목 ({{ completedCount }})
+        </button>
+      </div>
+
+      <!-- ACTIONS -->
+      <div class="actions">
+        <input
+          v-model="allDone"
+          type="checkbox"
+        />
+        <button @click="clearCompleted">완료된 항목 삭제</button>
+      </div>
     </div>
 
     <hr />
@@ -50,7 +50,10 @@
     <hr />
 
     <!-- INSERT -->
-    <todo-creator @create-todo="createTodo" />
+    <todo-creator
+      class="todo-app__creator"
+      @create-todo="createTodo"
+    />
 
   </div>
 </template>

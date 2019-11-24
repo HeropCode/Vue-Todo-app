@@ -1,14 +1,15 @@
 <template>
   <div>
-    <input
-      v-model="title"
-      :placeholder="placeholder"
-      type="text"
-      @keypress.enter="createTodo"
-    />
-    <button @click="createTodo">
+    <button>
       추가
     </button>
+    <input
+      :value="title"
+      :placeholder="placeholder"
+      type="text"
+      @input="title = $event.target.value"
+      @keypress.enter="createTodo"
+    />
   </div>
 </template>
 
@@ -23,7 +24,6 @@ export default {
   },
   methods: {
     createTodo () {
-      console.log('CreateTodo!!!!')
       // `title`의 유효성 검사
       const validatedTitle = this.title && this.title.trim()
       if (!validatedTitle) {
