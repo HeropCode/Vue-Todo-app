@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import moment from 'moment'
+import dayjs from 'dayjs'
 
 export default {
   name: 'TodoItem',
@@ -77,7 +77,7 @@ export default {
   },
   computed: {
     date () {
-      const date = moment(this.todo.createdAt)
+      const date = dayjs(this.todo.createdAt)
       const isSame = date.isSame(this.todo.updatedAt)
       if (isSame) {
         return date.format('YYYY년 MM월 DD일')
