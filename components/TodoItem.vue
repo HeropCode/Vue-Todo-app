@@ -19,13 +19,19 @@
       />
       <div class="item__actions">
         <button
-          key="cancel"
-          @click="offEditMode"
-        >취소</button>
-        <button
+          class="btn btn--primary"
           key="complete"
           @click="editedTodo"
-        >완료</button>
+        >
+          <i class="material-icons">done</i>
+        </button>
+        <button
+          class="btn"
+          key="cancel"
+          @click="offEditMode"
+        >
+          <i class="material-icons">clear</i>
+        </button>
       </div>
     </div>
 
@@ -34,11 +40,14 @@
       v-else
       class="item__inner item--normal"
     >
-      <input
-        v-model="todo.done"
-        type="checkbox"
-        @change="updateTodo({ done: todo.done })"
-      />
+      <label>
+        <input
+          v-model="todo.done"
+          type="checkbox"
+          @change="updateTodo({ done: todo.done })"
+        />
+        <span class="icon"><i class="material-icons">check</i></span>
+      </label>
       <div class="item__title-wrap">
         <div
           class="item__title"
@@ -49,13 +58,19 @@
       </div>
       <div class="item__actions">
         <button
+          class="btn"
           key="update"
           @click="onEditMode"
-        >수정</button>
+        >
+          <i class="material-icons">edit</i>
+        </button>
         <button
+          class="btn btn--danger"
           ket="delete"
           @click="deleteTodo"
-        >삭제</button>
+        >
+          <i class="material-icons">delete</i>
+        </button>
       </div>
     </div>
   </div>
@@ -118,20 +133,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-  .todo-item {
-    margin-bottom: 10px;
-    .item__inner {
-      display: flex;
-    }
-    .item__date {
-      font-size: 12px;
-    }
-    &.done {
-      .item__title {
-        text-decoration: line-through;
-      }
-    }
-  }
-</style>

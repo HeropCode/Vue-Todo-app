@@ -380,7 +380,17 @@ dayjs().format('YYYY년 MM월 DD일')
 
 스타일 적용을 적용하고, 그에 따라 일부 구조를 변경합니다.
 
+## Reset.css
+
+브라우저의 기본 스타일을 초기화합니다.
+
+```html
+<link href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" rel="stylesheet">
+```
+
 ## Google Material Icons
+
+Google Material Design에서 제공하는 무료 아이콘을 사용합니다.
 
 [Google Material Icons(머티리얼 아이콘)](https://material.io/resources/icons/)은 일반적인 동작과 아이템을 위한 유쾌하고 아름답게 제작된 심볼입니다.<br>
 [Apache license version 2.0.](https://www.apache.org/licenses/LICENSE-2.0.html)
@@ -392,6 +402,14 @@ dayjs().format('YYYY년 MM월 DD일')
 ```html
 <i class="material-icons">done</i>
 <i class="material-icons">close</i>
+```
+
+## Google Fonts
+
+사용할 폰트를 정의합니다.
+
+```html
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,700&display=swap&subset=korean" rel="stylesheet">
 ```
 
 # Chapter 3

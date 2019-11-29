@@ -1,0 +1,255 @@
+// COMMON
+$color__black: #000000;
+$color__white: #FFFFFF;
+$color__body-bg: #282934;
+$color__font--default: rgba(black, .8);
+
+$outside-padding: 40px;
+$media--small: "max-width: 780px";
+
+html {
+  font-size: 20px;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background: $color__body-bg;
+  color: $color__font--default;
+}
+button {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: inherit;
+  cursor: pointer;
+}
+label {
+  input[type="checkbox"] {
+    display: none;
+  }
+  .icon {
+    width: 30px;
+    height: 30px;
+    border: 1px solid lightgray;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    color: lightgray;
+  }
+  input[type="checkbox"]:checked + .icon {
+    border-color: yellowgreen;
+    background: yellowgreen;
+    color: white;
+  }
+}
+.btn {
+  $color__bg: darkgray;
+  background-color: $color__bg;
+  color: white;
+  padding: 4px 12px;
+  font-size: .8rem;
+  border-radius: 4px;
+  margin-right: 6px;
+  position: relative;
+  i {
+    display: block;
+  }
+  &:last-child {
+    margin-right: 0;
+  }
+  &:hover {
+    background-color: darken($color__bg, 10%);
+  }
+  &--primary {
+    $color__bg: royalblue;
+    background-color: $color__bg;
+    &:hover {
+      background-color: darken($color__bg, 10%);
+    }
+  }
+  &--danger {
+    $color__bg: crimson;
+    background-color: $color__bg;
+    &:hover {
+      background-color: darken($color__bg, 10%);
+    }
+  }
+}
+.float--left {
+  float: left;
+}
+.float--right {
+  float: right;
+}
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
+// TODO APP
+.todo-app {
+  font-size: 1rem;
+  font-family: 'Noto Sans KR', sans-serif;
+  margin: $outside-padding;
+  @media (#{$media--small}) {
+    margin: 0 16px;
+  }
+  &::before,
+  &::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    background: $color__body-bg;
+    height: $outside-padding;
+    z-index: 2;
+    @media (#{$media--small}) {
+      height: 0;
+    }
+  }
+  &::after {
+    top: inherit;
+    bottom: 0;
+  }
+}
+.todo-app__actions {
+  background: white;
+  border-bottom: 2px solid lightgray;
+  position: sticky;
+  top: $outside-padding;
+  z-index: 1;
+  @media (#{$media--small}) {
+    top: 0;
+  }
+  .filters {
+    display: flex;
+    border-bottom: 1px solid lightgray;
+    button {
+      padding: 10px 20px;
+      flex: 1;
+      color: lightgray;
+      word-break: keep-all;
+      &.active {
+        background: royalblue;
+        color: white;
+      }
+    }
+  }
+  .actions {
+    padding: 14px;
+  }
+}
+
+// TODO LIST
+.todo-app__list {
+  background: white;
+  overflow: auto;
+
+  // TODO ITEM
+  .todo-item {
+    border-bottom: 1px solid lightgray;
+    &:last-child {
+      border-bottom: none;
+    }
+    .item__inner {
+      display: flex;
+      align-items: center;
+      padding: 12px 14px;
+      min-height: 44px;
+      position: relative;
+      label {
+        margin-right: 12px;
+      }
+      .item__title-wrap {
+        flex: 1;
+        .item__title {
+          line-height: 1.4;
+          margin-bottom: 3px;
+        }
+        .item__date {
+          font-size: .65rem;
+          color: lightgray;
+        }
+      }
+      .item__actions {
+        position: absolute;
+        top: 16px;
+        right: 14px;
+        display: none;
+      }
+      &.item--edit {
+        input[type="text"] {
+          flex: 1;
+          margin-left: 44px;
+          margin-right: 114px;
+          font: inherit;
+          outline: none;
+          border: none;
+          &:focus {
+            color: royalblue;
+          }
+        }
+      }
+    }
+    &:hover {
+      .item__actions {
+        display: flex;
+      }
+    }
+  }
+}
+
+// TODO CREATOR
+.todo-app__creator {
+  position: sticky;
+  bottom: $outside-padding;
+  display: flex;
+  align-items: center;
+  padding: 14px;
+  border-top: 2px solid lightgray;
+  background: white;
+  @media (#{$media--small}) {
+    bottom: 0;
+  }
+  button {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    box-sizing: content-box;
+    border: 1px solid royalblue;
+    border-radius: 50%;
+    background: royalblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    i {
+      color: white;
+      display: block;
+    }
+  }
+  input {
+    display: block;
+    flex: 1;
+    border: none;
+    outline: none;
+    font: inherit;
+    &::-webkit-input-placeholder { color: lightgray; }
+    &:-ms-input-placeholder      { color: lightgray; }
+    &::-moz-placeholder          { color: lightgray; }
+  }
+}

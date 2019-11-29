@@ -1,7 +1,7 @@
 <template>
   <div>
-    <button>
-      추가
+    <button @click="createTodo">
+      <i class="material-icons">add</i>
     </button>
     <input
       :value="title"
@@ -35,6 +35,13 @@ export default {
       this.$emit('create-todo', this.title)
       // `title` 초기화
       this.title = ''
+      // 스크롤 최하단으로 이동
+      this.$nextTick(() => {
+        window.scrollTo(
+          0,
+          document.body.scrollHeight
+        )
+      })
     }
   }
 }
