@@ -1,14 +1,15 @@
 <template>
   <div>
+    <button @click="createTodo">
+      <i class="material-icons">add</i>
+    </button>
     <input
-      v-model="title"
+      :value="title"
       :placeholder="placeholder"
       type="text"
+      @input="title = $event.target.value"
       @keypress.enter="createTodo"
     />
-    <button @click="createTodo">
-      추가
-    </button>
   </div>
 </template>
 
@@ -23,7 +24,6 @@ export default {
   },
   methods: {
     createTodo () {
-      console.log('CreateTodo!!!!')
       // `title`의 유효성 검사
       const validatedTitle = this.title && this.title.trim()
       if (!validatedTitle) {
@@ -35,6 +35,13 @@ export default {
       this.$emit('create-todo', this.title)
       // `title` 초기화
       this.title = ''
+      // 스크롤 최하단으로 이동
+      this.$nextTick(() => {
+        window.scrollTo(
+          0,
+          document.body.scrollHeight
+        )
+      })
     }
   }
 }

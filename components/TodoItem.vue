@@ -1,52 +1,83 @@
 <template>
   <div
-    :title="date"
+    :class="{ done: todo.done }"
     class="todo-item"
   >
+    <!-- EDIT -->
     <div
       v-if="isEditMode"
-      class="item--edit"
+      class="item__inner item--edit"
     >
       <input
         ref="titleInput"
-        v-model="editedTitle"
+        :value="editedTitle"
         type="text"
-        @keypress.enter="editedTodo"
-        @keypress.esc="offEditMode"
+        @input="editedTitle = $event.target.value"
+        @keydown.enter="editedTodo"
+        @keydown.esc="offEditMode"
         @blur="offEditMode"
       />
-      <button @click="offEditMode">
-        취소
-      </button>
-      <button @click="editedTodo">
-        완료
-      </button>
+      <div class="item__actions">
+        <button
+          class="btn btn--primary"
+          key="complete"
+          @click="editedTodo"
+        >
+          <i class="material-icons">done</i>
+        </button>
+        <button
+          class="btn"
+          key="cancel"
+          @click="offEditMode"
+        >
+          <i class="material-icons">clear</i>
+        </button>
+      </div>
     </div>
+
+    <!-- NORMAL -->
     <div
       v-else
-      class="item--normal"
+      class="item__inner item--normal"
     >
-      <input
-        v-model="todo.done"
-        type="checkbox"
-        @change="updateTodo({ done: todo.done })"
-      />
-      <span
-        :class="{ done: todo.done }"
-        class="item__title"
-        @dblclick="onEditMode">{{ todo.title }}</span>
-      <button @click="onEditMode">
-        수정
-      </button>
-      <button @click="deleteTodo">
-        삭제
-      </button>
+      <label>
+        <input
+          v-model="todo.done"
+          type="checkbox"
+          @change="updateTodo({ done: todo.done })"
+        />
+        <span class="icon"><i class="material-icons">check</i></span>
+      </label>
+      <div class="item__title-wrap">
+        <div
+          class="item__title"
+          @dblclick="onEditMode">{{ todo.title }}</div>
+        <div class="item__date">
+          {{ date }}
+        </div>
+      </div>
+      <div class="item__actions">
+        <button
+          class="btn"
+          key="update"
+          @click="onEditMode"
+        >
+          <i class="material-icons">edit</i>
+        </button>
+        <button
+          class="btn btn--danger"
+          ket="delete"
+          @click="deleteTodo"
+        >
+          <i class="material-icons">delete</i>
+        </button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import moment from 'moment'
+import dayjs from 'dayjs'
 
 export default {
   name: 'TodoItem',
@@ -61,7 +92,7 @@ export default {
   },
   computed: {
     date () {
-      const date = moment(this.todo.createdAt)
+      const date = dayjs(this.todo.createdAt)
       const isSame = date.isSame(this.todo.updatedAt)
       if (isSame) {
         return date.format('YYYY년 MM월 DD일')
@@ -102,9 +133,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-  .done {
-    text-decoration: line-through;
-  }
-</style>

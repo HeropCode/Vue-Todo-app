@@ -1,40 +1,60 @@
 <template>
   <div class="todo-app">
 
-    <!-- FILTERS -->
-    <div class="todo-app__filters">
-      <button
-        :class="{ active: filter === 'all' }"
-        @click="changeFilter('all')"
-      >
-        모든 항목 ({{ todos.length }})
-      </button>
-      <button
-        :class="{ active: filter === 'active' }"
-        @click="changeFilter('active')"
-      >
-        해야 할 항목 ({{ activeCount }})
-      </button>
-      <button
-        :class="{ active: filter === 'completed' }"
-        @click="changeFilter('completed')"
-      >
-        완료된 항목 ({{ completedCount }})
-      </button>
-    </div>
-
-    <hr />
-
-    <!-- ACTIONS -->
     <div class="todo-app__actions">
-      <input
-        v-model="allDone"
-        type="checkbox"
-      />
-      <button @click="clearCompleted">완료된 항목 삭제</button>
-    </div>
+      <!-- FILTERS -->
+      <div class="filters">
+        <button
+          :class="{ active: filter === 'all' }"
+          @click="changeFilter('all')"
+        >
+          모든 항목 ({{ todos.length }})
+        </button>
+        <button
+          :class="{ active: filter === 'active' }"
+          @click="changeFilter('active')"
+        >
+          해야 할 항목 ({{ activeCount }})
+        </button>
+        <button
+          :class="{ active: filter === 'completed' }"
+          @click="changeFilter('completed')"
+        >
+          완료된 항목 ({{ completedCount }})
+        </button>
+      </div>
 
-    <hr />
+      <!-- ACTIONS -->
+      <div class="actions clearfix">
+        <label class="float--left">
+          <input
+            v-model="allDone"
+            type="checkbox"
+          />
+          <span class="icon"><i class="material-icons">done_all</i></span>
+        </label>
+        <div class="float--right clearfix">
+          <button
+            class="btn float--left"
+            @click="scrollToTop"
+          >
+            <i class="material-icons">expand_less</i>
+          </button>
+          <button
+            class="btn float--left"
+            @click="scrollToBottom"
+          >
+            <i class="material-icons">expand_more</i>
+          </button>
+          <button
+            class="btn btn--danger float--left"
+            @click="clearCompleted"
+          >
+            <i class="material-icons">delete_sweep</i>
+          </button>
+        </div>
+      </div>
+    </div>
 
     <!-- LIST -->
     <div class="todo-app__list">
@@ -47,10 +67,11 @@
       />
     </div>
 
-    <hr />
-
     <!-- INSERT -->
-    <todo-creator @create-todo="createTodo" />
+    <todo-creator
+      class="todo-app__creator"
+      @create-todo="createTodo"
+    />
 
   </div>
 </template>
@@ -59,7 +80,12 @@
 import low from 'lowdb'
 import LocalStorage from 'lowdb/adapters/LocalStorage'
 import cryptoRandomString from 'crypto-random-string'
-import _ from 'lodash'
+import _find from 'lodash/find'
+import _findIndex from 'lodash/findIndex'
+import _assign from 'lodash/assign'
+import _cloneDeep from 'lodash/cloneDeep'
+import _forEachRight from 'lodash/forEachRight'
+import scrollTo from 'scroll-to'
 
 import TodoCreator from './TodoCreator'
 import TodoItem from './TodoItem'
@@ -121,7 +147,7 @@ export default {
       // 기존에 저장된 DB가 있는지 확인
       if (hasTodos) {
         // 깊은 배열 복사, `this.todos`를 수정할 때 `this.db.getState().todos`를 직접 참조하는 문제를 방지할 수 있습니다.
-        this.todos = _.cloneDeep(this.db.getState().todos)
+        this.todos = _cloneDeep(this.db.getState().todos)
       } else {
         // Local DB 초기화
         this.db
@@ -152,7 +178,7 @@ export default {
       }
 
       // 로컬(local)에 반영
-      this.todos.push(_.assign({}, newTodo))
+      this.todos.push(_assign({}, newTodo))
     },
     updateTodo (todo, value) {
       let updatedTodo
@@ -179,8 +205,8 @@ export default {
       // }
 
       // Lodash 라이브러리 활용
-      const foundTodo = _.find(this.todos, { id: todo.id })
-      _.assign(foundTodo, updatedTodo)
+      const foundTodo = _find(this.todos, { id: todo.id })
+      _assign(foundTodo, updatedTodo)
     },
     deleteTodo (todo) {
       try {
@@ -196,7 +222,7 @@ export default {
 
       // 로컬(local)에 반영
       // Lodash 라이브러리 활용
-      const foundIndex = _.findIndex(this.todos, { id: todo.id })
+      const foundIndex = _findIndex(this.todos, { id: todo.id })
       this.$delete(this.todos, foundIndex)
     },
     completeAll (checked) {
@@ -207,7 +233,7 @@ export default {
         })
         .write() // 수정된 `todos` 배열을 반환합니다.
 
-      this.todos = _.cloneDeep(newTodos)
+      this.todos = _cloneDeep(newTodos)
     },
     clearCompleted () {
       // 배열의 앞에서부터 제거할 경우 배열 순서가 밀리며 문제가 발생!
@@ -231,7 +257,7 @@ export default {
       //   })
 
       // Lodash 라이브러리 활용
-      _.forEachRight(this.todos, todo => {
+      _forEachRight(this.todos, todo => {
         if (todo.done) {
           this.deleteTodo(todo)
         }
@@ -239,13 +265,20 @@ export default {
     },
     changeFilter (filter) {
       this.filter = filter
+    },
+    scrollToBottom () {
+      scrollTo(
+        0,
+        document.body.scrollHeight
+      )
+    },
+    scrollToTop () {
+      scrollTo(0, 0)
     }
   }
 }
 </script>
 
 <style lang="scss">
-  button.active {
-    font-weight: 900;
-  }
+  @import "../scss/style";
 </style>

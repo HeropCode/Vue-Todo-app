@@ -58,13 +58,13 @@ $ npm i -D webpack-merge
 ```
 
 `webpack.config.js` 파일을 생성합니다.<br>
-자세한 설정 내용은 완성된 파일을 참고하세요.
+자세한 설정 내용은 [완성된 파일(webpack.config.js)](https://github.com/HeropCode/Vue-Todo-app/blob/master/webpack.config.js)을 참고하세요.
 
 ## Babel
 
-바벨(Babel)은 ES6 이상의 코드를 ES5 이하 버전으로 변환하기 위해 사용합니다.
+[바벨(Babel)](https://babeljs.io/)은 ES6 이상의 코드를 ES5 이하 버전으로 변환하기 위해 사용합니다.
 
-- [@babel/core](hhttps://babeljs.io/docs/en/babel-core): 바벨이 실제 동작하는 모듈입니다.
+- [@babel/core](https://babeljs.io/docs/en/babel-core): 바벨이 실제 동작하는 모듈입니다.
 - [@babel/preset-env](https://babeljs.io/docs/en/babel-preset-env): 바벨의 지원 스펙을 지정합니다.
 - [babel-loader](https://github.com/babel/babel-loader): 웹팩(Webpack) 지원을 위해 사용합니다.
 
@@ -171,10 +171,9 @@ module.exports = {
     // https://github.com/standard/eslint-config-standard
     'standard',
     // https://eslint.vuejs.org/rules/
-    //// 'plugin:vue/base'
-    //// 'plugin:vue/essential'
-    //// 'plugin:vue/strongly-recommended'
+    // 'plugin:vue/base'
     'plugin:vue/essential'
+    // 'plugin:vue/strongly-recommended'
   ],
   plugins: [
     'vue'
@@ -308,14 +307,109 @@ yarn-error.log*
 *.sw?
 ```
 
+## Modules
+
+개발에 필요한 각 모듈의 간단한 사용법을 정리합니다.
+
+### Lowdb
+
+https://github.com/typicode/lowdb
+
+[JSON](https://ko.wikipedia.org/wiki/JSON) 형식으로 데이터를 저장하는 심플한 DB(데이터베이스)입니다.<br>
+사용자 환경의 LocalStorage를 DB로 구성하기 위해 사용합니다.<br>
+기본적으로 제공되는 몇 가지 API를 제외하면, 대부분 [Lodash API](https://lodash.com/docs/4.17.15)를 사용할 수 있습니다.
+
+```js
+import low from 'lowdb'
+import LocalStorage from 'lowdb/adapters/LocalStorage'
+
+const adapter = new LocalStorage(DB_NAME)
+const db = low(adapter)
+```
+
+```js
+// Lodash API를 사용하기 때문에(Lodash chain), A, B, C는 모두 같은 결과를 가집니다.
+const A = db.get('todos').value()
+const B = _.get(this.db.value(), 'todos')
+const C = db.getState().todos // `getState()` is Lowdb API
+
+// Lodash `get` - https://lodash.com/docs/4.17.15#get
+// Lodash `value` - https://lodash.com/docs/4.17.15#prototype-value
+```
+
+### Crypto random string
+
+https://github.com/sindresorhus/crypto-random-string
+
+`todo` 객체에서 ID로 사용할 고유한 랜덤 문자열을 생성합니다.
+
+```js
+import cryptoRandomString from 'crypto-random-string'
+
+cryptoRandomString({ length: 10 })
+// E.g. '2cf05d94db'
+```
+
+### Lodash
+
+https://lodash.com/
+
+다양한 유틸리티 기능을 제공 하는 자바스크립트 라이브러리입니다.<br>
+필요하지 않은 기능을 추후 번들에 포함하지 않기 위해서 다음과 같이 <strong>개별적으로 가져와 사용</strong>합니다.
+
+```js
+import _find from 'lodash/find'
+import _findIndex from 'lodash/findIndex'
+import _assign from 'lodash/assign'
+import _cloneDeep from 'lodash/cloneDeep'
+import _forEachRight from 'lodash/forEachRight'
+```
+
+### Dayjs
+
+https://github.com/iamkun/dayjs
+
+날짜 및 시간을 분석, 유효성 검사, 표시 등의 기능을 제공하는 <strong>경량화</strong>된 자바스크립트 라이브러리입니다.<br>
+[Momentjs](https://github.com/moment/moment/)를 사용하는 경우 사용 방법은 매우 쉽습니다.
+
+```js
+dayjs().format('YYYY년 MM월 DD일')
+```
+
 # Chapter 2
 
 스타일 적용을 적용하고, 그에 따라 일부 구조를 변경합니다.
 
-## 구글 메터리얼 아이콘
+## Reset.css
+
+브라우저의 기본 스타일을 초기화합니다.
+
+```html
+<link href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" rel="stylesheet">
+```
+
+## Google Material Icons
+
+Google Material Design에서 제공하는 무료 아이콘을 사용합니다.
+
+[Google Material Icons(머티리얼 아이콘)](https://material.io/resources/icons/)은 일반적인 동작과 아이템을 위한 유쾌하고 아름답게 제작된 심볼입니다.<br>
+[Apache license version 2.0.](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 ```html
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+```
+
+```html
+<i class="material-icons">done</i>
+<i class="material-icons">close</i>
+```
+
+## Google Fonts
+
+사용할 폰트를 정의합니다.
+
+```html
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,700&display=swap&subset=korean" rel="stylesheet">
 ```
 
 # Chapter 3

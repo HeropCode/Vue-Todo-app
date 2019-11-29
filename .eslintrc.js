@@ -13,10 +13,9 @@ module.exports = {
     // https://github.com/standard/eslint-config-standard
     'standard',
     // https://eslint.vuejs.org/rules/
-    //// 'plugin:vue/base'
-    //// 'plugin:vue/essential'
-    //// 'plugin:vue/strongly-recommended'
+    // 'plugin:vue/base'
     'plugin:vue/essential'
+    // 'plugin:vue/strongly-recommended'
   ],
   plugins: [
     'vue'
