@@ -412,6 +412,20 @@ Google Material Design에서 제공하는 무료 아이콘을 사용합니다.
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,700&display=swap&subset=korean" rel="stylesheet">
 ```
 
+## Default styles
+
+`scss/_style.scss`을 생성하고 [완성된 스타일 내용](https://github.com/HeropCode/Vue-Todo-app/blob/master/scss/_style.scss)을 사용해 다음과 같이 `TodoApp.vue`에 적용합니다.
+
+```vue
+<!-- TodoApp.vue -->
+
+<template>...</template>
+<script>...</script>
+<style lang="scss">
+  @import "../scss/style";
+</style>
+```
+
 # Chapter 3
 
 Vue Router를 사용합니다.
