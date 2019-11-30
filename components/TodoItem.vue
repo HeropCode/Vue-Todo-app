@@ -18,13 +18,13 @@
       />
       <div class="item__actions">
         <button
-          key="cancel"
-          @click="offEditMode"
-        >취소</button>
-        <button
           key="complete"
           @click="editedTodo"
         >완료</button>
+        <button
+          key="cancel"
+          @click="offEditMode"
+        >취소</button>
       </div>
     </div>
 
