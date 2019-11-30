@@ -56,6 +56,8 @@ label {
   font-size: .8rem;
   border-radius: 4px;
   margin-right: 6px;
+  text-decoration: none;
+  cursor: pointer;
   position: relative;
   i {
     display: block;
@@ -97,6 +99,62 @@ label {
     content: "";
     display: block;
     clear: both;
+  }
+}
+
+// HOME
+section.home,
+section.about {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  h1,
+  h2 {
+    font-size: 50px;
+    font-weight: 700;
+    color: $color__white;
+    margin-bottom: 20px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  h2 {
+    font-size: 28px;
+  }
+}
+section.home h2:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+// HOME BUTTON
+.to-home {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  background: $color__body-bg;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  transition: .4s;
+  i {
+    font-size: 20px;
+    color: $color__white;
+  }
+  &:hover {
+    background: $color__white;
+    i {
+      color: $color__body-bg;
+    }
   }
 }
 
