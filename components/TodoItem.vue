@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="{ done: todo.done }"
+    :class="{ done }"
     class="todo-item"
   >
     <!-- EDIT -->
@@ -15,7 +15,6 @@
         @input="editedTitle = $event.target.value"
         @keydown.enter="editedTodo"
         @keydown.esc="offEditMode"
-        @blur="offEditMode"
       />
       <div class="item__actions">
         <button
@@ -35,9 +34,8 @@
       class="item__inner item--normal"
     >
       <input
-        v-model="todo.done"
+        v-model="done"
         type="checkbox"
-        @change="updateTodo({ done: todo.done })"
       />
       <div class="item__title-wrap">
         <div
@@ -76,6 +74,16 @@ export default {
     }
   },
   computed: {
+    done: {
+      get () {
+        return this.todo.done
+      },
+      set (done) {
+        this.updateTodo({
+          done
+        })
+      }
+    },
     date () {
       const date = dayjs(this.todo.createdAt)
       const isSame = date.isSame(this.todo.updatedAt)
