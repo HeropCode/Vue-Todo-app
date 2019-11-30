@@ -177,35 +177,24 @@ export default {
       }
 
       // 로컬(local)에 반영
-      this.todos.push(_assign({}, newTodo))
+      this.todos.push(newTodo)
     },
     updateTodo (todo, value) {
-      let updatedTodo
-
       try {
         // DB에 저장
-        updatedTodo = this.db
+        this.db
           .get('todos')
           .find({ id: todo.id })
           .assign(value)
-          .write() // 수정된 `todo` 객체를 반환합니다.
+          .write()
       } catch (error) {
         console.error(error)
         return
       }
 
-      // 로컬(local)에 반영
-
-      // for (let i = 0; i < this.todos.length; i += 1) {
-      //   if (this.todos[i].id === todo.id) {
-      //     this.todos[i] = updatedTodo
-      //     break // 반복 중단
-      //   }
-      // }
-
       // Lodash 라이브러리 활용
       const foundTodo = _find(this.todos, { id: todo.id })
-      _assign(foundTodo, updatedTodo)
+      _assign(foundTodo, value)
     },
     deleteTodo (todo) {
       try {
@@ -274,4 +263,9 @@ export default {
 
 <style lang="scss">
   @import "scss/style";
+
+  .filters button.router-link-active {
+    background: royalblue;
+    color: white;
+  }
 </style>

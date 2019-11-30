@@ -202,7 +202,7 @@ section.home h2:hover {
       flex: 1;
       color: lightgray;
       word-break: keep-all;
-      &.router-link-active {
+      &.active {
         background: royalblue;
         color: white;
       }
