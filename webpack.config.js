@@ -10,7 +10,12 @@ module.exports = (env, opts) => {
   const config = {
     // 가져오기 확장자 생략 가능
     resolve: {
-      extensions: ['.js', '.vue']
+      extensions: ['.js', '.vue'],
+      // 절대 경로 별칭 설정
+      alias: {
+        '~': path.resolve(__dirname), // E.g. `import '~/components/TodoApp'` in script tag
+        'scss': path.resolve(__dirname, './scss/') // E.g. `import "scss/style";` in style tag
+      }
     },
     // 파일을 읽어들이기 시작하는 진입
     // `__dirname`은 현재 파일의 위치를 알려주는 NodeJS 전역 변수

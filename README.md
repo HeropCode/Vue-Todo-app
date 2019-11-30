@@ -428,7 +428,24 @@ Google Material Design에서 제공하는 무료 아이콘을 사용합니다.
 
 # Chapter 3
 
-Vue Router를 사용합니다.
+https://router.vuejs.org/kr/
+
+[SPA](https://ko.wikipedia.org/wiki/%EC%8B%B1%EA%B8%80_%ED%8E%98%EC%9D%B4%EC%A7%80_%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98) 라우터 구성을 위해 Vue Router를 사용합니다.
+
+```bash
+$ npm i vue-router
+```
+
+`main.js`에서 다음과 같이 설정합니다.
+
+```js
+// main.js
+
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+
+Vue.use(VueRouter)
+```
 
 # Chapter 4
 
