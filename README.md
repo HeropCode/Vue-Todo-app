@@ -3,6 +3,8 @@
 웹팩(Webpack)을 이용해 개발 환경을 구성합니다.<br>
 [Vue CLI](https://cli.vuejs.org/)를 사용하지 않음으로 Vue 기반 프로젝트가 기본적으로 어떻게 동작하는지 이해합니다.
 
+[Demo](https://wonderful-kirch-0a8c48.netlify.com/)
+
 # Chapter 1
 
 Vue.js를 사용해 스타일 없이 기본적인 Todo App를 만듭니다.
@@ -436,17 +438,12 @@ https://router.vuejs.org/kr/
 $ npm i vue-router
 ```
 
-`main.js`에서 다음과 같이 설정합니다.
-
-```js
-// main.js
-
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-
-Vue.use(VueRouter)
-```
-
 # Chapter 4
 
-Vuex를 사용합니다.
+https://vuex.vuejs.org/kr/
+
+상태 관리 패턴(Store)을 사용하기 위해 Vuex를 설치합니다.
+
+```bash
+$ npm i vuex
+```
