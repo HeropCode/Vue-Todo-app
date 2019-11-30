@@ -1,0 +1,35 @@
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+
+import Home from '~/views/Home'
+import About from '~/views/About'
+import TodoApp from '~/views/TodoApp'
+
+Vue.use(VueRouter)
+
+const routes = [
+  {
+    path: '/',
+    component: Home
+  },
+  {
+    path: '/about',
+    component: About
+  },
+  {
+    path: '/todos',
+    redirect: '/todos/all',
+    component: TodoApp,
+    children: [
+      {
+        path: ':id'
+      }
+    ]
+  }
+]
+
+export default new VueRouter({
+  // https://router.vuejs.org/kr/guide/essentials/history-mode.html
+  // mode: 'history',
+  routes
+})
