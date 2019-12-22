@@ -26,6 +26,7 @@ module.exports = {
   ],
   rules: {
     // 다음과 같은 예외 규칙을 추가할 수 있습니다
+    'no-new': 0,
     'vue/html-self-closing': ['error', {
       'html': {
         'void': 'always',
