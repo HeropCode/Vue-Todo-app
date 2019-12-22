@@ -205,7 +205,7 @@ dist/
 assets/
 ```
 
-'ESLint' 규칙을 비활성화해야 하는 경우 다음과 같이 작성할 수 있습니다.<br>
+일부 'ESLint' 규칙을 비활성화해야 하는 경우 'rules' 옵션 대신 다음과 같이 작성할 수 있습니다.<br>
 자세한 사용법은 [Disabling Rules with Inline Comments](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments)에서 확인할 수 있습니다.
 
 ```js
