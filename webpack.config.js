@@ -69,7 +69,7 @@ module.exports = (env, opts) => {
       new CopyPlugin([
         {
           from: 'assets/',
-          to: '.'
+          to: ''
         }
       ])
     ]
@@ -89,6 +89,7 @@ module.exports = (env, opts) => {
   // opts.mode === 'production'
   } else {
     return merge(config, {
+      devtool: 'cheap-module-source-map',
       plugins: [
         // 빌드(build) 직전 `output.path`(`dist` 디렉터리) 내 기존 모든 파일 삭제
         new CleanWebpackPlugin()

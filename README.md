@@ -173,7 +173,8 @@ module.exports = {
     // https://eslint.vuejs.org/rules/
     // 'plugin:vue/base'
     'plugin:vue/essential'
-    // 'plugin:vue/strongly-recommended'
+    // 'plugin:vue/strongly-recommended',
+    // 'plugin:vue/recommended'
   ],
   plugins: [
     'vue'
