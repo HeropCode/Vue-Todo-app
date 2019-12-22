@@ -16,6 +16,7 @@ module.exports = {
     // 'plugin:vue/base'
     'plugin:vue/essential'
     // 'plugin:vue/strongly-recommended'
+    // 'plugin:vue/recommended'
   ],
   plugins: [
     'vue'
