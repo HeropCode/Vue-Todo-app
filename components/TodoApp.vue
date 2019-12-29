@@ -152,7 +152,7 @@ export default {
         this.db
           .get('todos')
           .push(newTodo)
-          .write() // `todos` 배열을 반환합니다.
+          .write()
       } catch (error) {
         console.error(error)
         return

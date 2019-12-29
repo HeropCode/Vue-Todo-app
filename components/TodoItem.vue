@@ -51,7 +51,7 @@
           @click="onEditMode"
         >수정</button>
         <button
-          ket="delete"
+          key="delete"
           @click="deleteTodo"
         >삭제</button>
       </div>
