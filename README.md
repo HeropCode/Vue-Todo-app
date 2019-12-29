@@ -5,6 +5,8 @@
 
 [Demo](https://wonderful-kirch-0a8c48.netlify.com/)
 
+> 각 코드에 주석이 작성되어 있으니, 완성된 코드도 꼭 참고하세요.
+
 # Chapter 1
 
 Vue.js를 사용해 스타일 없이 기본적인 Todo App를 만듭니다.
