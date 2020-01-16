@@ -9,14 +9,17 @@ Vue.use(VueRouter)
 
 const routes = [
   {
+    name: 'index',
     path: '/',
     component: Home
   },
   {
+    name: 'about',
     path: '/about',
     component: About
   },
   {
+    name: 'todos',
     path: '/todos',
     redirect: '/todos/all',
     component: TodoApp,
