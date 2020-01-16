@@ -450,3 +450,10 @@ https://vuex.vuejs.org/kr/
 ```bash
 $ npm i vuex
 ```
+
+# Chapter 5
+
+https://www.netlify.com/
+
+정적 웹 사이트 호스팅을 위해 Netlify를 사용합니다.
+회원가입 후 무료로 사용할 수 있습니다.
