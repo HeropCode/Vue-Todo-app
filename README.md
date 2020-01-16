@@ -455,5 +455,5 @@ $ npm i vuex
 
 https://www.netlify.com/
 
-정적 웹 사이트 호스팅을 위해 Netlify를 사용합니다.
+정적 웹 사이트 호스팅을 위해 Netlify를 사용합니다.<br>
 회원가입 후 무료로 사용할 수 있습니다.
