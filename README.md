@@ -35,6 +35,8 @@ $ npm i -D MODULE_NAME
 
 ## 한 번에 설치하기
 
+> 다음은 'Chapter 1'의 '한 번에 설치하기' 입니다!
+
 ```bash
 $ npm i vue @babel/polyfill & npm i -D webpack webpack-cli webpack-dev-server webpack-merge @babel/core @babel/preset-env babel-loader vue-template-compiler vue-loader vue-style-loader css-loader node-sass sass-loader@^7 eslint@^5 babel-eslint eslint-config-standard@^12 eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-standard eslint-plugin-vue html-webpack-plugin copy-webpack-plugin clean-webpack-plugin postcss-loader autoprefixer
 ```
@@ -455,5 +457,5 @@ $ npm i vuex
 
 https://www.netlify.com/
 
-정적 웹 사이트 호스팅을 위해 Netlify를 사용합니다.<br>
+웹 사이트 호스팅을 위해 Netlify를 사용합니다.<br>
 회원가입 후 무료로 사용할 수 있습니다.
