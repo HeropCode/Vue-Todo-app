@@ -25,6 +25,7 @@ const routes = [
     component: TodoApp,
     children: [
       {
+        name: 'todos-filter',
         path: ':id'
       }
     ]
