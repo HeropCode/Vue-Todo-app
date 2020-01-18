@@ -35,7 +35,7 @@ const getters = {
     return state.todos.filter(todo => !todo.done).length
   },
   completedCount (state, getters) {
-    return state.todos.length - getters.activeCount
+    return getters.total - getters.activeCount
   }
 }
 
