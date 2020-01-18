@@ -28,7 +28,7 @@ const getters = {
         return state.todos.filter(todo => todo.done)
     }
   },
-  total () {
+  total (state) {
     return state.todos.length
   },
   activeCount (state) {
@@ -44,13 +44,23 @@ const mutations = {
   assignDB (state, db) {
     state.db = db
   },
-  updateDB (state, payload) {
-    const { todo, value } = payload
-
+  createDB (state, newTodo) {
+    state.db
+      .get('todos')
+      .push(newTodo)
+      .write()
+  },
+  updateDB (state, { todo, value }) {
     state.db
       .get('todos')
       .find({ id: todo.id })
       .assign(value)
+      .write()
+  },
+  deleteDB (state, todo) {
+    state.db
+      .get('todos')
+      .remove({ id: todo.id })
       .write()
   },
   assignTodos (state, todos) {
@@ -64,6 +74,9 @@ const mutations = {
 
     _assign(foundTodo, value)
   },
+  updateTodo (state, { todo, key, value }) {
+    todo[key] = value
+  },
   deleteTodo (state, index) {
     // Vue.delete(state.todos, index)
     state.todos.splice(index, 1)
@@ -75,7 +88,7 @@ const mutations = {
 
 // methods 같은. (computed에 바인딩, 비동기 처리 가능)
 const actions = {
-  initDB ({ state, commit, dispatch }) {
+  initDB ({ state, commit }) {
     const adapter = new LocalStorage('todo-app') // DB name
     commit('assignDB', low(adapter))
 
@@ -96,7 +109,7 @@ const actions = {
         .write()
     }
   },
-  createTodo ({ state, commit, dispatch }, title) {
+  createTodo ({ state, commit }, title) {
     const newTodo = {
       id: cryptoRandomString({ length: 10 }),
       title,
@@ -107,58 +120,50 @@ const actions = {
 
     try {
       // DB에 저장
-      state.db
-        .get('todos')
-        .push(newTodo)
-        .write()
+      commit('createDB', newTodo)
+      // 로컬(local)에 반영
+      commit('pushTodos', newTodo)
     } catch (error) {
       console.error(error)
-      return
     }
-
-    // 로컬(local)에 반영
-    commit('pushTodos', newTodo)
   },
-  updateTodo ({ state, commit, dispatch }, payload) {
+  updateTodo ({ state, commit }, payload) {
     const { todo, value } = payload
 
     try {
       // DB에 저장
       commit('updateDB', payload)
+      // Lodash 라이브러리 활용
+      const foundTodo = _find(state.todos, { id: todo.id })
+      commit('assignTodo', {
+        foundTodo,
+        value
+      })
     } catch (error) {
       console.error(error)
-      return
     }
-
-    // Lodash 라이브러리 활용
-    const foundTodo = _find(state.todos, { id: todo.id })
-    commit('assignTodo', {
-      foundTodo,
-      value
-    })
   },
-  deleteTodo ({ state, commit, dispatch }, todo) {
+  deleteTodo ({ state, commit }, todo) {
     try {
       // DB에 저장
-      state.db
-        .get('todos')
-        .remove({ id: todo.id })
-        .write()
+      commit('deleteDB', todo)
+      // 로컬(local)에 반영
+      // Lodash 라이브러리 활용
+      const foundIndex = _findIndex(state.todos, { id: todo.id })
+      commit('deleteTodo', foundIndex)
     } catch (error) {
       console.log(error)
-      return
     }
-
-    // 로컬(local)에 반영
-    // Lodash 라이브러리 활용
-    const foundIndex = _findIndex(state.todos, { id: todo.id })
-    commit('deleteTodo', foundIndex)
   },
-  completeAll ({ state, commit, dispatch }, checked) {
+  completeAll ({ state, commit }, checked) {
     const newTodos = state.db
       .get('todos')
       .forEach(todo => {
-        todo.done = checked
+        commit('updateTodo', {
+          todo,
+          key: 'done',
+          value: checked
+        })
       })
       .write() // 수정된 `todos` 배열을 반환합니다.
 
