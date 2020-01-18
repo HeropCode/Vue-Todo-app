@@ -8,7 +8,7 @@
           to="all"
           tag="button"
         >
-          모든 항목 ({{ todos.length }})
+          모든 항목 ({{ total }})
         </router-link>
         <router-link
           to="active"
@@ -91,14 +91,14 @@ export default {
     ]),
     ...mapGetters('todoApp', [
       'filteredTodos',
+      'total',
       'activeCount',
       'completedCount'
     ]),
     allDone: {
       get () {
-        const length = this.todos.length
         // 전체 항목 개수와 완료된 항목 개수가 일치하고 항목 개수가 1개 이상인 경우.
-        return length === this.completedCount && length > 0
+        return this.total === this.completedCount && this.total > 0
       },
       set (checked) {
         this.completeAll(checked)

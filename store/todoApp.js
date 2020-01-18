@@ -28,6 +28,9 @@ const getters = {
         return state.todos.filter(todo => todo.done)
     }
   },
+  total () {
+    return state.todos.length
+  },
   activeCount (state) {
     return state.todos.filter(todo => !todo.done).length
   },
