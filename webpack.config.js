@@ -74,7 +74,7 @@ module.exports = (env, opts) => {
       new CopyPlugin([
         {
           from: 'assets/',
-          to: '.'
+          to: ''
         }
       ])
     ]
@@ -82,6 +82,7 @@ module.exports = (env, opts) => {
 
   if (opts.mode === 'development') {
     return merge(config, {
+      // 빌드 시간이 적고, 디버깅이 가능한 방식
       devtool: 'eval',
       devServer: {
         // 자동으로 기본 브라우저를 오픈합니다
@@ -94,6 +95,8 @@ module.exports = (env, opts) => {
   // opts.mode === 'production'
   } else {
     return merge(config, {
+      // 용량이 적은 방식
+      devtool: 'cheap-module-source-map',
       plugins: [
         // 빌드(build) 직전 `output.path`(`dist` 디렉터리) 내 기존 모든 파일 삭제
         new CleanWebpackPlugin()

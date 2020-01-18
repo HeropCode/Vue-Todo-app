@@ -64,7 +64,7 @@
         </button>
         <button
           class="btn btn--danger"
-          ket="delete"
+          key="delete"
           @click="deleteTodo"
         >
           <i class="material-icons">delete</i>

@@ -3,6 +3,10 @@
 웹팩(Webpack)을 이용해 개발 환경을 구성합니다.<br>
 [Vue CLI](https://cli.vuejs.org/)를 사용하지 않음으로 Vue 기반 프로젝트가 기본적으로 어떻게 동작하는지 이해합니다.
 
+[Demo](https://wonderful-kirch-0a8c48.netlify.com/)
+
+> 각 코드에 주석이 작성되어 있으니, 완성된 코드도 꼭 참고하세요.
+
 # Chapter 1
 
 Vue.js를 사용해 스타일 없이 기본적인 Todo App를 만듭니다.
@@ -30,6 +34,8 @@ $ npm i -D MODULE_NAME
 ```
 
 ## 한 번에 설치하기
+
+> 다음은 'Chapter 1'의 '한 번에 설치하기' 입니다!
 
 ```bash
 $ npm i vue @babel/polyfill & npm i -D webpack webpack-cli webpack-dev-server webpack-merge @babel/core @babel/preset-env babel-loader vue-template-compiler vue-loader vue-style-loader css-loader node-sass sass-loader@^7 eslint@^5 babel-eslint eslint-config-standard@^12 eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-standard eslint-plugin-vue html-webpack-plugin copy-webpack-plugin clean-webpack-plugin postcss-loader autoprefixer
@@ -174,6 +180,7 @@ module.exports = {
     // 'plugin:vue/base'
     'plugin:vue/essential'
     // 'plugin:vue/strongly-recommended'
+    // 'plugin:vue/recommended'
   ],
   plugins: [
     'vue'
@@ -436,17 +443,19 @@ https://router.vuejs.org/kr/
 $ npm i vue-router
 ```
 
-`main.js`에서 다음과 같이 설정합니다.
-
-```js
-// main.js
-
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-
-Vue.use(VueRouter)
-```
-
 # Chapter 4
 
-Vuex를 사용합니다.
+https://vuex.vuejs.org/kr/
+
+상태 관리 패턴(Store)을 사용하기 위해 Vuex를 설치합니다.
+
+```bash
+$ npm i vuex
+```
+
+# Chapter 5
+
+https://www.netlify.com/
+
+웹 사이트 호스팅을 위해 Netlify를 사용합니다.<br>
+회원가입 후 무료로 사용할 수 있습니다.
