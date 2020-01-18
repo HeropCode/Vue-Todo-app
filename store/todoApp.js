@@ -66,7 +66,7 @@ const mutations = {
   assignTodos (state, todos) {
     state.todos = todos
   },
-  pushTodos (state, newTodo) {
+  pushTodo (state, newTodo) {
     state.todos.push(newTodo)
   },
   assignTodo (state, payload) {
@@ -122,7 +122,7 @@ const actions = {
       // DB에 저장
       commit('createDB', newTodo)
       // 로컬(local)에 반영
-      commit('pushTodos', newTodo)
+      commit('pushTodo', newTodo)
     } catch (error) {
       console.error(error)
     }
