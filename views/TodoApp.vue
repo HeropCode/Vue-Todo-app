@@ -85,10 +85,10 @@ export default {
     TodoItem
   },
   computed: {
-    ...mapState('todoApp', [
-      'db',
-      'todos'
-    ]),
+    // ...mapState('todoApp', [
+    //   'db',
+    //   'todos'
+    // ]),
     ...mapGetters('todoApp', [
       'filteredTodos',
       'total',
