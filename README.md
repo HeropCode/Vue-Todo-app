@@ -1,5 +1,12 @@
 # Vue Todo list app
 
+- 같은 테스트 환경을 위해 VueJS를 `^2` 버전으로 설치하도록 문서를 수정했습니다.
+  - 강의 영상의 VueJS 버전은 `2.6.10` 버전입니다.
+- 모든 모듈의 버전은 [Package.json](https://github.com/HeropCode/Vue-Todo-app/blob/master/package.json) 파일을 참고해주세요.
+- 강의 영상의 NodeJS 버전은 `10.15.0`이며, 그 이상의 LTS 버전(짝수 버전)을 사용하시길 권장합니다.
+- 강의 영상의 NPM 버전은 `6.5.0`이며, 역시 그 이상의 버전을 사용하시길 권장합니다.
+- 버그 및 수정/건의 사항 등은 [Issues](https://github.com/HeropCode/Vue-Movie-app/issues) 혹은 thesecon@gmail.com으로 문의 부탁드립니다.
+
 웹팩(Webpack)을 이용해 개발 환경을 구성합니다.<br>
 [Vue CLI](https://cli.vuejs.org/)를 사용하지 않음으로 Vue 기반 프로젝트가 기본적으로 어떻게 동작하는지 이해합니다.
 
@@ -38,7 +45,11 @@ $ npm i -D MODULE_NAME
 > 다음은 'Chapter 1'의 '한 번에 설치하기' 입니다!
 
 ```bash
-$ npm i vue @babel/polyfill & npm i -D webpack webpack-cli webpack-dev-server webpack-merge @babel/core @babel/preset-env babel-loader vue-template-compiler vue-loader vue-style-loader css-loader node-sass sass-loader@^7 eslint@^5 babel-eslint eslint-config-standard@^12 eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-standard eslint-plugin-vue html-webpack-plugin copy-webpack-plugin clean-webpack-plugin postcss-loader autoprefixer
+$ npm i vue@^2 @babel/polyfill
+```
+
+```bash
+$ npm i -D webpack webpack-cli webpack-dev-server webpack-merge @babel/core @babel/preset-env babel-loader vue-template-compiler vue-loader vue-style-loader css-loader node-sass sass-loader@^7 eslint@^5 babel-eslint eslint-config-standard@^12 eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-standard eslint-plugin-vue html-webpack-plugin copy-webpack-plugin clean-webpack-plugin postcss-loader autoprefixer
 ```
 
 ## Webpack
@@ -117,7 +128,7 @@ const config = {
 [vue](https://github.com/vuejs/vue)를 설치합니다.(`-D`(`--save-dev`)가 없어야 합니다!)
 
 ```bash
-$ npm i vue
+$ npm i vue@^2
 ```
 
 웹팩에서 `.vue` 파일을 해석할 수 있도록 다음 모듈들을 설치합니다.
