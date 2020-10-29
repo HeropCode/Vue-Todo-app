@@ -77,6 +77,55 @@ $ npm i -D webpack-merge
 `webpack.config.js` 파일을 생성합니다.<br>
 자세한 설정 내용은 [완성된 파일(webpack.config.js)](https://github.com/HeropCode/Vue-Todo-app/blob/master/webpack.config.js)을 참고하세요.
 
+### Webpack 사용 시 자주 묻는 질문
+
+> 터미널에서 `webpack --mode production` 명령이 동작하지 않아요!
+
+우선 첫 번째 방법부터 시도해 보세요.
+아래 내용으로 해결되지 않으면, 다른 문제가 있을 수 있습니다.
+
+#### 첫 번째 해결 방법
+
+`package.json` 파일의 `"scripts"` 항목에 다음과 같이 내용을 추가하세요.<br />
+`"scripts"` 항목에 추가된 스크립트는 실행될 때 이미 설치된 패키지를 참조합니다.
+
+```json
+{
+  "scripts": {
+    "build": "webpack --mode production"
+  }
+}
+```
+
+그리고 터미널에서 다음과 같이 입력하세요.
+
+```bash
+$ npm run build
+```
+
+#### 두 번째 해결 방법
+
+터미널에서 다음과 같이 `npx`로 시작해서 명령을 입력하세요.<br />
+`npx`은 해당 명령을 패키지 설치 없이도 실행할 수 있는 명령입니다.
+
+> NPX는 NPM@5.2.0 버전부터 사용할 수 있습니다.
+
+```bash
+$ npx webpack --mode production
+```
+
+#### 세 번째 해결 방법
+
+`webpack` 명령이 어디서나 동작할 수 있도록 다음과 같이 `-g` 플래그를 사용해 전역으로 설치합니다.
+
+```bash
+## 전역 설치
+$ npm install -g webpack webpack-cli
+
+## 동작
+$ webpack --mode production
+```
+
 ## Babel
 
 [바벨(Babel)](https://babeljs.io/)은 ES6 이상의 코드를 ES5 이하 버전으로 변환하기 위해 사용합니다.
